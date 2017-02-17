@@ -6,7 +6,9 @@ $(document).ready(function(){
       url: "/data",
       success: function(data){
         // yay! we have data!
-        console.log('returned data from server: ', data);
+        // console.log('returned data from server: ', data);
+        $('#dataContainer').empty();
+        
       }
     });
 });
