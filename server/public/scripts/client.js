@@ -5,7 +5,7 @@ var personArray = [];
 $(document).ready(function(){
 
 
-  // Upon page load, get the data from the server
+  /////// SERVER STUFF ///////
   $.ajax({
     type: "GET",
     url: "/data",
@@ -13,14 +13,13 @@ $(document).ready(function(){
       personArray = data.phirephiters;
       currentPerson = data.phirephiters[currentPersonIndex]; // set currentPerson to first object
       appendDOM(currentPerson); // display 1st person on success
+      generateStatusBar(personArray);
       console.log(personArray);
       console.log(currentPerson);
     }
   });
 
-
-
-
+  /////// BUTTON LISTENERS ///////
   $('#nextButton').on('click', function(){
     console.log('next');
     console.log(currentPerson);
@@ -34,12 +33,6 @@ $(document).ready(function(){
       currentPerson = personArray[currentPersonIndex];
       appendDOM(currentPerson);
     }
-
-
-    // appendDOM(currentPerson);
-
-    //appendDOM(data.phirephiters[currentValue] ++
-
   });
 
   $('#backButton').on('click', function(){
@@ -54,22 +47,24 @@ $(document).ready(function(){
       appendDOM(currentPerson);
     }
 
-    // appendDOM();
-    //appendDOM(data.phirephiters[currentValue] --
-
   });
-
-  function appendDOM(person){
-    $('#dataContainer').empty();
-    $('#dataContainer').append('<div class="person"></div>');
-    var $el = $('#dataContainer').children();
-    $el.append('<h2>' + person.name + '</h2>');
-    $el.append('<h2>' + person.git_username + '</h2>');
-    $el.append('<h2>' + person.shoutout + '</h2>');
-  }
-
+  
 });
 
+/////// FUNCTIONS ///////
+function appendDOM(person){
+  $('#dataContainer').empty();
+  $('#dataContainer').append('<div class="person"></div>');
+  var $el = $('#dataContainer').children();
+  $el.append('<h2> Name: ' + person.name + '</h2>');
+  $el.append('<h2> Git User: ' + person.git_username + '</h2>');
+  $el.append('<h2> Shoutout: ' + person.shoutout + '</h2>');
+}
+function generateStatusBar(array){
+  for (var i = 0; i < array.length; i++) {
+    $('#carouselStatus').append('<div></div>');
+  }
+}
 
 
 // NOTE: todo:

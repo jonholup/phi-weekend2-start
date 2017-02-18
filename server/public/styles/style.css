@@ -1,3 +1,19 @@
 button {
   display: inline-block;
 }
+
+#selectedDiv {
+  background-color: black;
+  border: 1px dashed white;
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+}
+
+#carouselStatus div {
+  background-color: red;
+  border: 1px solid black;
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+}
