@@ -13,8 +13,7 @@ $(document).ready(function(){
       currentPerson = data.phirephiters[currentPersonIndex]; // set currentPerson to first object
       appendDOM(currentPerson); // display 1st person on success
       generateStatusBar(personArray);
-      console.log(personArray);
-      console.log(currentPerson);
+
     }
   });
 
@@ -60,7 +59,7 @@ $(document).ready(function(){
 function appendDOM(person){
   $('#dataContainer').empty();
   $('#dataContainer').append('<div class="person"></div>');
-  var $el = $('#dataContainer').children();
+  var $el = $('#dataContainer').children().fadeIn('slow');
   $el.append('<h2> Name: ' + person.name + '</h2>');
   $el.append('<h2> Git User: ' + person.git_username + '</h2>');
   $el.append('<h2> Shoutout: ' + person.shoutout + '</h2>');
@@ -70,6 +69,9 @@ function appendDOM(person){
 function generateStatusBar(array){
   for (var i = 0; i < array.length; i++) {
     $('#carouselStatus').append('<div data-id=' + i + '>' + (i + 1) + '</div>');
+    // $('#carouselStatus:first-child').
+    $('[data-id=' + '"' + currentPersonIndex + '"' + ']').addClass('selected');
+
 
   }
 }
